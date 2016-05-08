@@ -32,8 +32,8 @@ public class Game {
         glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE); // the window will stay hidden after creation
         glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE); // the window will be resizable
  
-        int WIDTH = StaticConfig.winWidth;
-        int HEIGHT = StaticConfig.winHeight;
+        int WIDTH = Config.winWidth;
+        int HEIGHT = Config.winHeight;
  
         // Create the window
         window = glfwCreateWindow(WIDTH, HEIGHT, "Hello World!", NULL, NULL);
@@ -69,8 +69,8 @@ public class Game {
 	}
 	
 	public void loop(){
-		
-		int buffer = GL45.glCreateBuffers();
+		GL.createCapabilities();
+		/*int buffer = GL45.glCreateBuffers();
 		ByteBuffer bbfr = BufferUtils.createByteBuffer(9);
 		bbfr.putFloat(-1.0f);
 		bbfr.putFloat(-1.0f);
@@ -84,7 +84,7 @@ public class Game {
 		bbfr.putFloat(-1.0f);
 		bbfr.putFloat(0.0f);
 		
-		bbfr.flip();
+		bbfr.flip();*/
 		
 		
 		while (glfwWindowShouldClose(window) != true) {

@@ -10,6 +10,8 @@ import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.system.MemoryUtil.*;
 
+import java.nio.ByteBuffer;
+
 public class Game {
 	
 	GLFWKeyCallback keyCallback;
@@ -30,8 +32,8 @@ public class Game {
         glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE); // the window will stay hidden after creation
         glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE); // the window will be resizable
  
-        int WIDTH = 300;
-        int HEIGHT = 300;
+        int WIDTH = StaticConfig.winWidth;
+        int HEIGHT = StaticConfig.winHeight;
  
         // Create the window
         window = glfwCreateWindow(WIDTH, HEIGHT, "Hello World!", NULL, NULL);
@@ -67,10 +69,28 @@ public class Game {
 	}
 	
 	public void loop(){
+		
+		int buffer = GL45.glCreateBuffers();
+		ByteBuffer bbfr = BufferUtils.createByteBuffer(9);
+		bbfr.putFloat(-1.0f);
+		bbfr.putFloat(-1.0f);
+		bbfr.putFloat(0.0f);
+		
+		bbfr.putFloat(0.0f);
+		bbfr.putFloat(1.0f);
+		bbfr.putFloat(0.0f);
+		
+		bbfr.putFloat(1.0f);
+		bbfr.putFloat(-1.0f);
+		bbfr.putFloat(0.0f);
+		
+		bbfr.flip();
+		
+		
 		while (glfwWindowShouldClose(window) != true) {
 		    /* Do something */
 			double time = glfwGetTime();
-		
+			
 		
 		
 		

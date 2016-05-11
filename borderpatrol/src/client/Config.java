@@ -1,4 +1,4 @@
-package borderpatrol;
+package client;
 
 public class Config {
 	public static final int winWidth = 1024;

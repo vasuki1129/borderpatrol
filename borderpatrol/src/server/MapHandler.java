@@ -1,4 +1,4 @@
-package borderpatrol;
+package server;
 
 public class MapHandler {
 

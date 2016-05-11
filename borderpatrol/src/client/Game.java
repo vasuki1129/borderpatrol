@@ -1,4 +1,4 @@
-package borderpatrol;
+package client;
 
 
 import org.lwjgl.*;

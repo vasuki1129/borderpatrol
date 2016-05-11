@@ -1,4 +1,4 @@
-package borderpatrol;
+package client;
 
 public class Main {
 

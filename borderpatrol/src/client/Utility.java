@@ -1,4 +1,4 @@
-package borderpatrol;
+package client;
 
 import static org.lwjgl.opengl.GL11.GL_LINEAR;
 import static org.lwjgl.opengl.GL11.GL_RGBA;
@@ -48,7 +48,7 @@ public class Utility {
 		nb.flip();
 
 		
-		ByteBuffer tex = STBImage.stbi_load(Utility.stringBuffer("assets/GrassTile1.png"),xb,yb,nb,0);
+		ByteBuffer tex = STBImage.stbi_load(Utility.stringBuffer(path),xb,yb,nb,0);
 		tex.flip();
 	
      
@@ -57,7 +57,7 @@ public class Utility {
         // Now just create a texture ID and bind it. Then you can load it using 
         // whatever OpenGL method you want, for example:
         int textureID = glGenTextures(); //Generate texture ID
-       glBindTexture(GL_TEXTURE_2D, textureID); //Bind texture ID
+        glBindTexture(GL_TEXTURE_2D, textureID); //Bind texture ID
         
         //Setup wrap mode
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL12.GL_CLAMP_TO_EDGE);

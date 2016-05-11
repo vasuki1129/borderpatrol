@@ -4,16 +4,25 @@ package borderpatrol;
 import org.lwjgl.*;
 import org.lwjgl.glfw.*;
 import org.lwjgl.opengl.*;
- 
+import org.lwjgl.stb.STBImage;
+
+
 import static org.lwjgl.glfw.Callbacks.*;
 import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.system.MemoryUtil.*;
 
+
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.nio.ByteBuffer;
+import java.nio.IntBuffer;
 
 public class Game {
 	
+	int WIDTH;
+	int HEIGHT;
 	GLFWKeyCallback keyCallback;
 	
 	private long window;
@@ -32,8 +41,8 @@ public class Game {
         glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE); // the window will stay hidden after creation
         glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE); // the window will be resizable
  
-        int WIDTH = Config.winWidth;
-        int HEIGHT = Config.winHeight;
+        WIDTH = Config.winWidth;
+        HEIGHT = Config.winHeight;
  
         // Create the window
         window = glfwCreateWindow(WIDTH, HEIGHT, "Hello World!", NULL, NULL);
@@ -85,14 +94,35 @@ public class Game {
 		bbfr.putFloat(0.0f);
 		
 		bbfr.flip();*/
-		
-		
+		glMatrixMode(GL_PROJECTION);
+		glLoadIdentity();
+		glOrtho(0, WIDTH, HEIGHT, 0, 1, -1);
+		glMatrixMode(GL_MODELVIEW);
+		int grasstile = Utility.Texicute("assets/GrassTile1.png");
 		while (glfwWindowShouldClose(window) != true) {
-		    /* Do something */
+		    
+			
+			
+			//********************************************************************
+			//Initialize
 			double time = glfwGetTime();
 			
+
+			glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+			glEnable(GL_DEPTH_TEST);
+			
+	        GL11.glBegin(GL11.GL_QUADS);
+            GL11.glTexCoord2f(0,0);
+            GL11.glVertex2f(100,100);
+            GL11.glTexCoord2f(1,0);
+            GL11.glVertex2f(100+128,100);
+            GL11.glTexCoord2f(1,1);
+            GL11.glVertex2f(100+128,100+128);
+            GL11.glTexCoord2f(0,1);
+            GL11.glVertex2f(100,100+128);
+            GL11.glEnd();
 		
-		
+			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		
 			
 			

@@ -2,10 +2,25 @@ package server;
 
 import java.util.ArrayList;
 
-public class Chunk {
+import util.FloatCoord;
 
-	ArrayList<Entity> users = new ArrayList<Entity>();
+public class Chunk {
 	
+	ArrayList<Entity> users = new ArrayList<Entity>();
+	Tile[][] tiles;
+	
+	public Chunk(){
+		tiles = new Tile[128][128];
+	}
+	
+
+	public void addAgent(String username,FloatCoord position){
+		
+	}
+	
+	public void addEntity(String id,FloatCoord position, int quantity){
+		
+	}
 	
 	
 }

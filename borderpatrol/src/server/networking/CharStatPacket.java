@@ -1,8 +1,13 @@
-package server;
+package server.networking;
+
+
 
 public class CharStatPacket {
 	//Player Stat Information
-	//
+	//Sent to client everytime there is a stat update
+	
+	public boolean needsUpdate = false;
+	
 	//	Primary Stats
 	public float PWR;
 	public float WIS;
@@ -78,6 +83,7 @@ public class CharStatPacket {
 	
 	//multiplies and sets all character stats from base stats, items, and multipliers 
 	public void applyStats(){
+			needsUpdate = true;
 			//Base formulas;
 			health = (END*40) * (1+(LUK/100));
 			mana = (WIS*26) * (1+(LUK/100));

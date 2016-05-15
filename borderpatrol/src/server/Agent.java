@@ -1,5 +1,7 @@
 package server;
 
+import server.networking.CharStatPacket;
+
 public class Agent extends Entity{
 	
 	Chunk curChunk;

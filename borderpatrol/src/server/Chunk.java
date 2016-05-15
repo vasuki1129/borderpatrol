@@ -6,7 +6,8 @@ import util.FloatCoord;
 
 public class Chunk {
 	
-	ArrayList<Entity> users = new ArrayList<Entity>();
+	ArrayList<Agent> users = new ArrayList<Agent>();
+	ArrayList<Entity> entities = new ArrayList<Entity>();
 	Tile[][] tiles;
 	
 	public Chunk(){

@@ -48,6 +48,16 @@ public class CharClass {
 	
 	public CharStatPacket applyMult(CharStatPacket pkt){
 		CharStatPacket pk = new CharStatPacket();
+		pk=pkt;
+		pk.healthMult = healthMult;
+		pk.manaMult = manaMult;
+		pk.atkMult = atkMult;
+		pk.willMult = willMult;
+		pk.accMult = accMult;
+		pk.atkSpeedMult = atkSpeedMult;
+		pk.charmMult = charmMult;
+		pk.resistMult = resistMult;
+		pk.carryWeightMult = carryWeightMult;
 		pk.health = pkt.health *healthMult;
 		pk.mana = pkt.mana *manaMult;
 		pk.atk = pkt.atk *atkMult;

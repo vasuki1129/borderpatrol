@@ -8,6 +8,9 @@ public class CharStatPacket {
 	
 	public boolean needsUpdate = false;
 	
+	public util.FloatCoord pos;
+	public server.Chunk curChunk; //TODO: update this value
+	
 	//	Primary Stats
 	public float PWR;
 	public float WIS;

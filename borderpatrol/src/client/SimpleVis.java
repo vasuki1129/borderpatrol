@@ -28,15 +28,27 @@ import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.system.MemoryUtil.*;
 
-import client.SimpleVisUtilities;
+import java.io.IOException;
+import java.net.InetAddress;
+import java.net.Socket;
+import java.net.UnknownHostException;
+
+import static client.SimpleVisUtilities.*;
 
 public class SimpleVis {
 	  // The window handle
     private long window;
- 
-    public void run() {
+    AgentSprite player;
+    public Socket sock;
+    server.networking.CharStatPacket curPack;
+    
+    public void run() throws UnknownHostException, IOException {
         System.out.println("Hello LWJGL " + Version.getVersion() + "!");
- 
+        sock = new Socket(InetAddress.getByName("127.0.0.1"),9098);
+        
+        player = new AgentSprite();
+        
+        
         try {
             init();
             loop();
@@ -99,7 +111,7 @@ public class SimpleVis {
 
     }
  
-    private void loop() {
+    private void loop() throws IOException {
         // This line is critical for LWJGL's interoperation with GLFW's
         // OpenGL context, or any context that is managed externally.
         // LWJGL detects the context that is current in the current thread,
@@ -117,9 +129,12 @@ public class SimpleVis {
         glMatrixMode(GL_MODELVIEW);
         // Run the rendering loop until the user has attempted to close
         // the window or has pressed the ESCAPE key.
+        float frame = 0;
+        float endFrame = 10000000;
+
         while ( !glfwWindowShouldClose(window) ) {
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // clear the framebuffer
- 
+            player.update(curPack);
             
             
             
@@ -131,13 +146,44 @@ public class SimpleVis {
             // Poll for window events. The key callback above will only be
             // invoked during this call.
             glfwPollEvents();
+            frame++;
         }
+        sock.close();
     }
  
-    public static void main(String[] args) {
+    
+    private class AgentSprite implements Renderable{
+    	public float x;
+    	public float y;
+    	
+    	public void render(){
+    		drawCircle(x,y,2);
+    		drawCircle(x,y,7);
+    	}
+    	
+    	public void update(server.networking.CharStatPacket curPkt){
+    		//x = curPkt.
+    	}
+    	
+    }
+    
+    
+    
+    public static void main(String[] args) throws UnknownHostException, IOException {
         new SimpleVis().run();
     }
 	
 	
 	
+    private class comThread implements Runnable {
+
+		@Override
+		public void run() {
+			sock
+			
+		}
+    	
+    	
+    }
+    
 }

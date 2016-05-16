@@ -4,6 +4,7 @@ import server.networking.CharStatPacket;
 
 public class Agent extends Entity{
 	
+	util.FloatCoord locPos;
 	Chunk curChunk;
 	private String password;
 	private boolean authenticated = true;
@@ -17,6 +18,12 @@ public class Agent extends Entity{
 	
 	public Agent(){
 		stats = new CharStatPacket();
+		
+	}
+	
+	
+	public void update(){
+		stats.pos = locPos;
 	}
 	
 	public boolean authenticate(String pw){

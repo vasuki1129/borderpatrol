@@ -179,7 +179,7 @@ public class SimpleVis {
 
 		@Override
 		public void run() {
-			sock
+			
 			
 		}
     	
